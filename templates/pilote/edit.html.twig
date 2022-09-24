@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block titlepage %}{{ pilote.surname }}{% endblock %}
+
+{% block body %}
+    <h1>Modifier: {{ pilote.firstname }} {{ pilote.surname }}</h1>
+
+    {{ include('pilote/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn" href="{{ path('pilote_new') }}">back to list</a>
+
+    {{ include('pilote/_delete_form.html.twig') }}
+{% endblock %}

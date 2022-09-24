@@ -1,0 +1,46 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Pilote: {{ pilote.firstname }} {{ pilote.surname }}{% endblock %}
+
+{% block titlepage %}{{ pilote.firstname }} {{ pilote.surname }}{% endblock %}
+{% block body %}
+    <div class="container-center">
+        <div class="pilote-profil-card">
+            <div class="pilote-profil-portrait">
+                <img src="/image/pilote/portrait/{{ pilote.portraitFilename }}" alt="">
+            </div>
+            <div class="pilote-profil-info">
+                <div class="pilote-profil-info-title">
+                    <h2 class="title">{{ pilote.firstname }} {{ pilote.surname }}</h2>
+                    <p>{{ pilote.number }}</p>
+                </div>
+                <div class="pilote-profil-separator"></div>
+                <div class="pilote-profil-info-desc">
+                    <div>
+                        <h3>Nationnalité</h3>
+                        <img class="flag" src="/image/country/{{ pilote.country.flagFilename }}" alt="">
+                        <p>{{ pilote.country.name }}</p>
+                    </div>
+                    <div class="grid-right-responsive">
+                        <h3>Âge</h3>
+                        <p>{{ pilote.age }} ans</p>
+                    </div>
+                    <div class="pilote-profil-desc-team">
+                        <h3>Écurie</h3>
+                        <a href="{{ path('team_show', {'name': pilote.team.name}) }}"><img class="pilote-profile-team-banner" src="/image/team/banner/{{ pilote.team.bannerFilename }}" alt=""></a>
+                        <div>
+                            <a class="text-theme" href="{{ path('team_show', {'name': pilote.team.name}) }}">{{ pilote.team.name }}</a>
+                            <img class="flag" src="/image/country/{{ pilote.team.country.flagFilename }}" alt="">
+                            <span>{{ pilote.team.country.name }}</span>
+                        </div>
+                    </div>
+                    <div class="pilote-profil-team-monoplace">
+                        <img src="/image/team/monoplace/{{ pilote.team.monoplaceFilename }}" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

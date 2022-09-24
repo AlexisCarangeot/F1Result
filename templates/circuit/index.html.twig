@@ -1,0 +1,82 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block titlepage %}Calendrier {{ ("now"|date("Y")) }}{% endblock %}
+
+{% block body %}
+    <div class="container calendrier-container">
+
+        {% set lastCircuit = circuitsSort | last %}
+
+        {% for circuit in circuitsSort %}
+
+            {% if circuit.name == circuitsSort.0.name %}
+                <p class="calendrier-month">{{ ('monthFull.'~circuit.date|date("m"))|trans|raw }} {{ circuit.date|date("Y") }}</p>
+            {% endif %}
+
+            <div class="calendrier-item">
+                <div class="calendrier-date">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
+                         height="30" viewBox="0 0 30 30">
+                        <g id="surface1">
+                            <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                                  d="M 22.5 15 L 7.5 30 L 7.5 22.5 L 15 15 L 7.5 7.5 L 7.5 0 Z M 22.5 15 "/>
+                        </g>
+                    </svg>
+                    <p><span>{{ (circuit.date|date("d")) }}</span>{{ ('monthShort.'~circuit.date|date("m"))|trans|raw }}
+                    </p>
+                </div>
+                <div class="calendrier-separator"></div>
+                <div class="calendrier-info">
+                    <img src="/image/country/{{ circuit.country.flagFilename }}" alt="">
+                    <p>{{ circuit.name }}<span><svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="17"
+                                                    viewBox="0 0 30 30">
+                                                <g id="surface1">
+                                                <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                                                      d="M 14.988281 0 C 9.253906 0 4.585938 4.667969 4.585938 10.402344 C 4.585938 15.925781 14.023438 28.828125 14.425781 29.371094 L 14.800781 29.882812 C 14.84375 29.941406 14.914062 29.976562 14.988281 29.976562 C 15.0625 29.976562 15.132812 29.941406 15.175781 29.882812 L 15.550781 29.371094 C 15.953125 28.828125 25.390625 15.925781 25.390625 10.402344 C 25.390625 4.667969 20.726562 0 14.988281 0 Z M 14.988281 6.675781 C 17.042969 6.675781 18.714844 8.347656 18.714844 10.402344 C 18.714844 12.457031 17.042969 14.128906 14.988281 14.128906 C 12.933594 14.128906 11.261719 12.457031 11.261719 10.402344 C 11.261719 8.347656 12.933594 6.675781 14.988281 6.675781 Z M 14.988281 6.675781 "/>
+                                                </g>
+                                                </svg>
+                    {{ circuit.place }}</span></p>
+                </div>
+                <div class="calendrier-statut">
+                    {% if (circuit.date < date()) %}
+                        <div class="calendrier-statut-past statut-content">
+                            <div class="calendrier-separator"></div>
+                            <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     width="20" height="20" viewBox="0 0 30 30">
+                                    <g id="surface1">
+                                        <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                                              d="M 29.140625 4.101562 C 28.699219 3.660156 27.984375 3.660156 27.542969 4.097656 L 13.980469 17.628906 L 9.085938 12.3125 C 8.664062 11.851562 7.949219 11.824219 7.488281 12.246094 C 7.027344 12.667969 7 13.382812 7.421875 13.84375 L 13.113281 20.023438 C 13.320312 20.25 13.613281 20.382812 13.921875 20.390625 C 13.929688 20.390625 13.9375 20.390625 13.945312 20.390625 C 14.242188 20.390625 14.53125 20.269531 14.742188 20.058594 L 29.140625 5.699219 C 29.582031 5.257812 29.582031 4.542969 29.140625 4.101562 Z M 29.140625 4.101562 "/>
+                                        <path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"
+                                              d="M 28.871094 13.871094 C 28.246094 13.871094 27.738281 14.375 27.738281 15 C 27.738281 22.023438 22.023438 27.738281 15 27.738281 C 7.976562 27.738281 2.261719 22.023438 2.261719 15 C 2.261719 7.976562 7.976562 2.261719 15 2.261719 C 15.625 2.261719 16.128906 1.753906 16.128906 1.128906 C 16.128906 0.507812 15.625 0 15 0 C 6.730469 0 0 6.730469 0 15 C 0 23.269531 6.730469 30 15 30 C 23.269531 30 30 23.269531 30 15 C 30 14.375 29.492188 13.871094 28.871094 13.871094 Z M 28.871094 13.871094 "/>
+                                    </g>
+                                </svg>
+                                Terminé
+                            </p>
+                            <a href="" class="btn">Voir les résultats</a>
+                        </div>
+                    {% else %}
+                        <div class="calendrier-statut-next statut-content">
+                            <div class="calendrier-separator"></div>
+                            <p>Prochainement</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if circuit.name == lastCircuit.name %}
+            {% else %}
+                {% if circuitsSort[loop.index].date|date("m") != circuitsSort[loop.index0].date|date("m") %}
+                    <p class="calendrier-month">{{ ('monthFull.'~circuitsSort[loop.index].date|date("m"))|trans|raw }} {{ circuitsSort[loop.index].date|date("Y") }}</p>
+                {% endif %}
+            {% endif %}
+
+        {% else %}
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

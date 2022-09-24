@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block titlepage %}{{ team.name }}{% endblock %}
+
+{% block body %}
+    <h1>Modifier: {{ team.name }}</h1>
+
+    {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn" href="{{ path('team_new') }}">back to list</a>
+
+    {{ include('team/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,27 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        flag_image:
+            uri_prefix: /image/country
+            upload_destination: '%kernel.project_dir%/public/image/country'
+
+        pilote_portrait:
+            uri_prefix: /image/pilote/portrait
+            upload_destination: '%kernel.project_dir%/public/image/pilote/portrait'
+
+
+        team_logo:
+            uri_prefix: /image/team/logo
+            upload_destination: '%kernel.project_dir%/public/image/team/logo'
+
+
+        team_banner:
+            uri_prefix: /image/team/banner
+            upload_destination: '%kernel.project_dir%/public/image/team/banner'
+
+
+        team_monoplace:
+            uri_prefix: /image/team/monoplace
+            upload_destination: '%kernel.project_dir%/public/image/team/monoplace'
+

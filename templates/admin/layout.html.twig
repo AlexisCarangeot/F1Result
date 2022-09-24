@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+{% block layout %}
+<div class="template-admin">
+    <div class="topbar">
+        <div class="menu">
+            <i class="fas fa-users-cog"></i>
+            <p>Admin-{% block titlepage %}{% endblock %}</p>
+        </div>
+        <ul>
+            <li><a href="{{ path('admin')}}">Accueil</a></li>
+            <li><a href="{{ path('circuit_new')}}">Circuit</a></li>
+            <li><a href="{{ path('pilote_new')}}">Pilote</a></li>
+            <li><a href="{{ path('team_new')}}">Écurie</a></li>
+            <li><a href="{{ path('country_new')}}">Pays</a></li>
+        </ul>
+        <a class="btn" href="{{ path('index') }}">Retourner sur le site</a>
+    </div>
+
+    <div class="content">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}

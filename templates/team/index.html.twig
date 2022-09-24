@@ -1,0 +1,37 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Écuries{% endblock %}
+
+{% block titlepage %}Liste des écuries{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {% for team in teams|sort((a,b)=> a.country.name <=> b.country.name)  %}
+            <div class="card">
+                <a href="{{ path('team_show', {'name': team.name}) }}">
+                    <div class="team-banner">
+                        <img src="/image/team/banner/{{ team.bannerFilename }}" alt="">
+                    </div>
+                </a>
+                <div class="team-info">
+                    <a class="info-title" href="{{ path('team_show', {'name': team.name}) }}">{{ team.name }}</a>
+                    <div class="team-desc">
+                        <p>Pilotes:</p>
+                        {% for pilote in team.pilotes %}
+                            <a class="text-theme" href="{{ path('pilote_show', {'surname': pilote.surname}) }}">{{ pilote.firstname }} {{ pilote.surname }}</a>
+                        {% endfor %}
+                        <div>
+                            <img class="team-monoplace" src="/image/team/monoplace/{{ team.monoplaceFilename }}" alt="">
+                            <img class="flag" src="/image/country/{{ team.country.flagFilename }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+
+        {% endfor %}
+
+
+    </div>
+{% endblock %}

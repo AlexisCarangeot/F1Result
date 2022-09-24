@@ -1,0 +1,61 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block titlepage %}Pilote{% endblock %}
+
+{% block body %}
+    <h1>Formulaire de création</h1>
+
+    {{ include('pilote/_form.html.twig') }}
+
+    <h2>Liste des pilotes</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Surname</th>
+            <th>Points</th>
+            <th>Team</th>
+            <th>Country</th>
+            <th>Age</th>
+            <th>Number</th>
+            <th>PortraitFilename</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pilote in pilotes|sort((a,b)=> b.point <=> a.point) %}
+            <tr>
+                <td>{{ pilote.firstname }}</td>
+                <td>{{ pilote.surname }}</td>
+                <td>{{ pilote.point }}</td>
+                <td>
+                    {% if pilote.team.name is defined %}
+                        {{ pilote.team.name }}
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if pilote.country.name is defined %}
+                        {{ pilote.country.name }}
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </td>
+                <td>{{ pilote.age }}</td>
+                <td>{{ pilote.number }}</td>
+                <td>{{ pilote.portraitFilename }}</td>
+                <td>
+                    <a class="btn" href="{{ path('pilote_edit', {'surname': pilote.surname}) }}">edit</a>
+                    {{ include('pilote/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

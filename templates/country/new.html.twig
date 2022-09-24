@@ -1,0 +1,37 @@
+{% extends 'admin/layout.html.twig' %}
+
+
+{% block titlepage %}Pays{% endblock %}
+
+{% block body %}
+
+    <h1>Formulaire de création</h1>
+    {{ include('country/_form.html.twig') }}
+
+    <h2>Liste des pays</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th>FlagFilename</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for country in countries %}
+            <tr>
+                <td>{{ country.name }}</td>
+                <td>{{ country.flagFilename }}</td>
+                <td>
+                    <a class="btn" href="{{ path('country_edit', {'name': country.name}) }}">edit</a>
+                    {{ include('country/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

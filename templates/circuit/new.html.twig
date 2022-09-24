@@ -1,0 +1,48 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block titlepage %}Circuit{% endblock %}
+
+{% block body %}
+    <h1>Formulaire de création</h1>
+
+    {{ include('circuit/_form.html.twig') }}
+
+
+    <h2>Liste des circuits</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Place</th>
+            <th>Date</th>
+            <th>Country</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for circuit in circuits|sort((a,b)=> a.date <=> b.date) %}
+            <tr>
+                <td>{{ circuit.name }}</td>
+                <td>{{ circuit.place }}</td>
+                <td>{{ circuit.date ? circuit.date|date('d/m/Y') : '' }}</td>
+                <td>
+                    {% if circuit.country.name is defined %}
+                        {{ circuit.country.name }}
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn" href="{{ path('circuit_edit', {'name': circuit.name}) }}">edit</a>
+                    {{ include('circuit/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

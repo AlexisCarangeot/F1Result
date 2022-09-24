@@ -1,0 +1,15 @@
+before:
+    path: /
+    controller: App\Controller\IndexController::index
+    defaults:   {_locale: fr}
+    requirements:
+        _locale: en|fr|eo
+
+
+
+index:
+    path: /
+    controller: App\Controller\IndexController::index
+    defaults: { _locale: fr }
+    requirements:
+        _locale: fr>

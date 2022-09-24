@@ -1,0 +1,33 @@
+{% extends 'public/layout.html.twig' %}
+
+{% block title %}Pilotes{% endblock %}
+
+{% block titlepage %}Liste des pilotes{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {% for pilote in pilotes|sort((a,b)=> a.country.name <=> b.country.name) %}
+            <div class="card">
+                <a href="{{ path('pilote_show', {'surname': pilote.surname}) }}">
+                    <div class="pilote-portrait">
+                            <img src="/image/pilote/portrait/{{ pilote.portraitFilename }}" alt="">
+                    </div>
+                </a>
+                <div class="info">
+                    <a class="info-title" href="{{ path('pilote_show', {'surname': pilote.surname}) }}">{{ pilote.firstname }}  {{ pilote.surname}}</a>
+                    <div class="pilote-desc">
+                        <a class="text-theme" href="{{ path('team_show', {'name': pilote.team.name}) }}">{{ pilote.team.name }}</a>
+                        <p class="grid-right pilote-age">{{ pilote.age }} ans</p>
+                        <img class="flag" src="/image/country/{{ pilote.country.flagFilename }}" alt="">
+                        <p class="grid-right pilote-number">{{ pilote.number }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+
+        {% endfor %}
+
+
+    </div>
+{% endblock %}

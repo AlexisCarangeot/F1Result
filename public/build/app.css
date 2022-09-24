@@ -1,0 +1,973 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #E6ECF2;
+}
+
+html{
+    color: #1B1B1E;
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    color: #1B1B1E;
+}
+
+
+.title{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.background-theme{
+    background-color: #508484;
+}
+
+.text-theme{
+    color: #508484;
+}
+
+.btn{
+    border-style: none;
+    cursor: pointer;
+    background-color: #508484;
+    color: white;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    transition: all .5s;
+}
+
+.btn:hover{
+    box-shadow: 0 0 10px #508484;
+}
+
+.btn-delete{
+    background-color: #b35555;
+}
+
+.btn-delete:hover{
+    box-shadow: 0 0 10px #b35555;
+}
+
+/* CSS PUBLIC */
+
+
+.template-public{
+    position: relative;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 70px 1fr;
+}
+
+.topbar{
+    padding-left: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+    background-color: #ffffff;
+    grid-row: 1;
+    grid-column: 2;
+    box-shadow: 0 2px 2px rgba(0,0,0,.25);
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 11rem;
+}
+
+.menu i{
+    font-size: 3rem;
+}
+
+.menu p{
+    margin-left: 2rem;
+    font-size: 2rem;
+}
+
+.template-public .search{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem 0 1.6rem;
+    box-shadow: 0 0 4px #508484;
+    border-radius: 50px;
+    transition: all .4s;
+}
+
+.search-input{
+    border: none;
+    padding: 0.9rem;
+    width: 120px;
+}
+
+.search:focus-within{
+    box-shadow: 0 0 8px #508484;
+}
+
+
+
+
+.template-public .sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 80px;
+    position: fixed;
+    z-index: 100;
+    grid-row: 1 / 3;
+    grid-column: 1;
+}
+
+.sidebar a img{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2.5rem;
+    width: 50px;
+}
+
+.sidebar-link{
+    font-size: 2.3rem;
+}
+
+.sidebar ul li{
+    cursor: pointer;
+    margin: 3rem 0;
+}
+
+.sidebar ul li a{
+    color: #FFFFFF;
+    transition: all .3s;
+}
+
+.sidebar ul li a:hover{
+    color: #1B1B1E;
+}
+
+.sidebar ul li a svg{
+    fill: #FFFFFF;
+    transition: all .3s;
+}
+
+.sidebar ul li a svg path{
+    fill: #FFFFFF !important;
+    transition: all .3s;
+}
+
+.sidebar ul li a:hover{
+    fill: #1B1B1E !important;
+}
+
+.sidebar ul li a:hover path{
+    fill: #1B1B1E !important;
+}
+
+.template-public .content{
+    z-index: 1;
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.container{
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-center{
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    margin: 1rem;
+    width: 220px;
+    background-color: #FFFFFF;
+    transition: all .4s;
+}
+
+.card:hover{
+    transform: translateY(-7px);
+    box-shadow: 0 15px 25px rgba(80,132,132,.4);
+}
+
+
+.pilote-portrait{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 160px;
+    width: 100%;
+}
+
+.pilote-portrait img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.card .info{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+}
+
+.card .info-title{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 2.7rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+    text-align: center;
+
+}
+
+.pilote-desc{
+    font-size: 1.2rem;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 1rem;
+}
+
+.grid-right{
+    justify-self: right;
+}
+
+.flag{
+    border: solid 1px rgba(0,0,0,.2);
+    width: 35px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.pilote-number{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px black;
+    border-radius: 50px;
+}
+
+
+.pilote-profil-card{
+    box-shadow: 0 0 20px rgba(0,0,0,.3);
+    border-radius: 15px;
+    background-color: #fcfcfc;
+    display: flex;
+    height: 450px;
+    width: 60%;
+}
+
+.pilote-profil-portrait{
+    width: 70%;
+    height: 100%;
+}
+
+.pilote-profil-portrait img{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pilote-profil-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 0 0 5rem;
+    font-size: 1.2rem;
+}
+
+.pilote-profil-info-title{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.pilote-profil-info-title p{
+    font-size: 1.5rem;
+    right: 5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
+    border-radius: 50px;
+}
+
+
+.pilote-profil-separator{
+    margin: .5rem 0 3rem 0;
+    width: calc(100% - 5rem);
+    height: 2px;
+    background-color: rgba(27,27,30,.2);
+}
+
+.pilote-profil-info-desc{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1.3fr;
+    grid-row-gap: 2rem;
+    width: 100%;
+
+}
+
+.pilote-profil-info-desc h3{
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.pilote-profil-desc-team{
+    padding-right: 2rem;
+    grid-column: 1/3;
+}
+
+.pilote-profil-desc-team div{
+    display: inline-block;
+}
+
+
+.pilote-profil-desc-team div a{
+    margin-bottom: 1rem;
+    display: block !important;
+}
+
+.pilote-profil-info-desc div img{
+    vertical-align: bottom;
+}
+
+.pilote-profil-info-desc div p{
+    display: inline-block;
+    opacity: .6;
+}
+.pilote-profil-info-desc div span{
+    opacity: .6;
+}
+
+.pilote-profile-team-banner{
+    width: 120px;
+    vertical-align: top !important;
+    margin-right: 1.5rem;
+}
+
+.pilote-profil-team-monoplace{
+    align-self: end;
+}
+
+.pilote-profil-team-monoplace img{
+    width: 200px;
+}
+
+
+.team-banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 120px;
+    width: 100%;
+}
+.team-banner img{
+    object-fit: cover;
+    width: 100%;
+}
+
+.team-info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.team-desc p{
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: .2rem;
+}
+
+.team-desc a{
+    margin: .2rem 0;
+    font-size: 1.2rem;
+    display: block;
+}
+
+.team-desc div{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.team-monoplace{
+    width: 70px;
+}
+
+.team-profil-logo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+}
+.team-profil-logo  img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-profil-banner{
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    background-color: #1B1B1E;
+    color: #FFFFFF;
+    height: 100px;
+}
+
+.team-profil-banner-img{
+    height: 100%;
+}
+
+.team-profil-banner-img img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.team-country-flag{
+    margin: 0 2rem 0 4rem;
+    width: 60px;
+}
+
+.team-profil-banner-title p{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.team-profil-banner-title h2{
+    font-size: 2.5rem;
+}
+
+.team-profil-banner-points{
+    position: absolute;
+    right: 2rem;
+    text-align: center;
+}
+
+.team-profil-pilote{
+    display: flex;
+    margin: 1rem 0;
+    width: 70%;
+    background-color: white;
+    height: 150px;
+}
+
+.team-profil-pilote-portrait{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 200px;
+    overflow: hidden;
+}
+
+.team-profil-pilote-portrait img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.team-profil-pilote-info{
+    padding: 2rem 2rem 1rem 2rem;
+    align-items: flex-end;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-profil-monoplace{
+    width: 300px;
+}
+
+.team-profil-pilote-desc{
+    height: 100%;
+}
+
+.team-profil-pilote-desc p{
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.team-profil-pilote-desc span{
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.team-profil-pilote-desc .flag{
+    vertical-align: middle;
+    margin-right: .7rem;
+}
+
+.classement-container{
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.classement{
+    background-color: #FFFFFF;
+    padding: 4rem 4rem;
+    margin: 0 1rem;
+}
+
+.classement svg{
+    margin-right: .7rem;
+}
+
+.classement table{
+    background-color: #FFFFFF;
+    padding: 2rem 0;
+    position: relative;
+    border-spacing: 0 !important;
+}
+
+
+.classement tr{
+    display: block;
+    border-bottom: 1px solid #ddd;
+    vertical-align: center;
+    text-align: center;
+}
+
+
+.classement tbody tr:nth-of-type(1) td:nth-of-type(1){
+    background-color: #508484;
+    color: white;
+}
+.classement tbody tr:nth-of-type(2) td:nth-of-type(1){
+    background-color: rgba(80,132,132,.6);
+    color: white;
+}
+.classement tbody tr:nth-of-type(3) td:nth-of-type(1){
+    background-color: rgba(80,132,132,.4);
+    color: white;
+}
+
+.classement td,th{
+    font-size: 1.4rem;
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.classement th{
+    font-size: 1.2rem;
+}
+
+.td-flag{
+    width: 60px;
+}
+
+.td-club{
+    cursor: pointer;
+    text-align: left !important;
+    width: 200px;
+}
+
+.td-club a{
+    transition: all .3s;
+}
+
+.td-club:hover a{
+    color: #508484;
+}
+
+tbody .td-point, tbody .td-position{
+    color: #9595ab;
+}
+
+.td-point{
+    text-align: center !important;
+    width: 70px;
+}
+
+.td-position{
+    padding-right: 2rem !important;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    width: 50px;
+}
+
+.flag-classement{
+    border: solid 1px rgba(0,0,0,.2);
+    width: 25px;
+    height: 15px;
+    object-fit: cover;
+}
+
+.team-logo-classement{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.template-admin label{
+    display: block
+}
+
+.calendrier-container{
+    padding: 2rem 1rem;
+    flex-direction: column;
+}
+
+.calendrier-item{
+    position: relative;
+    width: 85%;
+    margin: 1rem 0;
+    padding: 0 2rem;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.calendrier-date{
+    position: relative;
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.calendrier-date svg path{
+    fill: #9595AB !important;
+}
+
+.calendrier-date p{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.calendrier-date p span{
+    font-weight: 600;
+    display: block;
+}
+
+.calendrier-separator{
+    width: 1px;
+    height: 65%;
+    background-color: #1B1B1E;
+    opacity: .3;
+}
+
+.calendrier-info{
+    padding-left: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.calendrier-info img{
+    width: 70px;
+    height: 50px;
+    border: solid 1px rgba(0,0,0,.5);
+}
+
+.calendrier-info p{
+    margin-left: 2rem;
+    color: #1B1B1E;
+    font-size: 2.5rem;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 400;
+}
+.calendrier-info p span{
+    margin-top: .7rem;
+    color: #1B1B1E;
+    display: block;
+    opacity: .6 ;
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+.calendrier-info p span svg{
+    opacity: .6;
+}
+
+.calendrier-month{
+    text-transform: uppercase;
+    opacity: .6;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 3rem;
+}
+
+.calendrier-statut{
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.statut-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.statut-content .calendrier-separator{
+    position: absolute;
+    left: 0;
+}
+
+.calendrier-statut-next .calendrier-separator{
+    background-color: #12B822 ;
+    opacity: 1;
+}
+
+.calendrier-statut p{
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.calendrier-statut-past p{
+    position: relative;
+    margin-bottom: 10px;
+    opacity: .6;
+    display: flex;
+    align-items: center;
+}
+
+.calendrier-statut-past p svg{
+    position: absolute;
+    left: -30px;
+}
+
+.calendrier-statut-next p{
+    color: #12B822;
+}
+/* CSS PUBLIC */
+
+
+
+/* CSS RESPONSIVE PUBLIC */
+
+@media screen and (max-width: 1480px){
+    .team-profil-logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .team-profil-monoplace {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 930px){
+    .pilote-profil-portrait img {
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: unset;
+    }
+    .pilote-profil-portrait {
+        width: 100%;
+        height: 200px;
+    }
+    .pilote-profil-card {
+        flex-direction: column;
+        width: 60%;
+        height: unset;
+    }
+
+    .pilote-profil-info {
+        padding: 3rem 5rem;
+    }
+
+    .pilote-profil-info-title p {
+        right: 0;
+    }
+    .pilote-profil-separator {
+        width: 100%;
+    }
+
+    .grid-right-responsive{
+        justify-self: right;
+    }
+
+    .pilote-profil-team-monoplace {
+        grid-column: 1/3;
+        justify-self: center;
+    }
+
+}
+
+@media screen and (max-width: 955px){
+
+    .team-profil-banner {
+        width: 95%;
+    }
+
+    .team-profil-pilote {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 700px){
+
+    .team-profil-monoplace {
+        display: none;
+    }
+    .pilote-profil-card {
+        width: 85%;
+    }
+
+    .team-profil-banner-points {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 581px){
+
+    .container-center {
+        padding-top: 2rem;
+        justify-content: unset;
+    }
+
+    .pilote-card {
+        width: 160px;
+    }
+
+    .pilote-card .info {
+         padding: 1.5rem 2rem 0 2rem;
+     }
+
+    .pilote-card .info-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 485px){
+
+    .pilote-profil-info {
+        padding: 3rem 2rem;
+    }
+}
+
+
+
+
+
+/* CSS RESPONSIVE PUBLIC */
+
+
+
+/* CSS ADMIN */
+
+.template-admin .topbar ul li {
+    display: inline-block;
+    margin: 0 3rem;
+}
+
+.template-admin .menu{
+    left: 5rem;
+}
+
+.template-admin .topbar ul li a{
+    font-size: 1.6rem;
+}
+
+.template-admin .topbar .btn{
+    position: absolute;
+    right: 5rem;
+}
+
+.template-admin{
+    position: relative;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+}
+
+.template-admin .content{
+    padding: 7rem 3rem;
+    width: 100%;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin-form{
+    text-align: left;
+}
+
+.template-admin h1{
+    margin-bottom: 3rem;
+}
+.template-admin tr{
+    font-size: 1.2rem;
+    background-color: #FFFFFF;
+}
+.template-admin th{
+    text-align: center;
+    padding: 2rem;
+}
+.template-admin tr td:last-child{
+    display: flex;
+}
+.template-admin td{
+    text-align: center;
+    padding: 1rem 1rem;
+}
+
+
+/* CSS ADMIN */
